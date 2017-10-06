@@ -829,7 +829,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 	#endif
 	#define Z_SIGMA_HOME_Y_POINT 150
 	
-	#define SIGMA_Z_HOME_TRAVEL_SPEED 8000  //  Changed 06/10/17 CL was 13000
+	#define SIGMA_Z_HOME_TRAVEL_SPEED 13000
 	
 	#define Z_SIGMA_RAISE_BEFORE_HOMING 10
 	#define Z_SIGMA_RAISE_AFTER_HOMING 5
@@ -1032,7 +1032,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define NUM_LINES 10
 //#define HOMING_FEEDRATE {50*60, 50*60, 4*60, 0}  // set the homing speeds (mm/min)
 #if BCN3D_PRINTER_SETUP == BCN3D_SIGMA_PRINTER_DEFAULT
-	#define HOMING_FEEDRATE {30*60, 45*60, 6*60, 0} //{60*60, 90*60, 15*60, 0} ///{75*60, 65*60, 6*60, 0}  // old homing speeds (mm/min)   //  Changed 06/10/17 CL was {60*60, 90*60, 15*60, 0}
+	#define HOMING_FEEDRATE {60*60, 90*60, 15*60, 0} ///{75*60, 65*60, 6*60, 0}  // old homing speeds (mm/min)
 #else
 	#define HOMING_FEEDRATE {60*60, 90*60, 15*60, 0} ///{75*60, 65*60, 6*60, 0}  // old homing speeds (mm/min)
 #endif
