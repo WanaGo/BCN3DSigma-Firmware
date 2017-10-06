@@ -1,7 +1,7 @@
 ﻿# MODIFIED BCN3D Sigma Firmware
 
 In this version of 1.26, Duplication and Mirror modes are enabled.
-Duplication Mode has been tested, Mirror mode should work also, but as of the time of writing this, it hasnt been tried.
+Duplication Mode and Mirror modes have been tested.
 
 Here is there start code which needs to be manually edited into your gcode.
 In this case, it was heating the hot ends to 240, for ABS printing.
