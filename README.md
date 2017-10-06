@@ -6,6 +6,7 @@ Duplication Mode has been tested, Mirror mode should work also, but as of the ti
 Here is there start code which needs to be manually edited into your gcode.
 Bits in Bold are the main offenders. In this case, it was heating the hot ends to 240, for ABS printing.
 
+```
 ;FLAVOR:Marlin
 ;TIME:920
 ;Filament used: 0.321482m
@@ -51,3 +52,4 @@ G1 F2400 E-8		;retract
 **T0		;switch to the left extruder**
 **M605 S2 X105.0		;set dual carriage mode, Duplication, 105mm offset**
 **G92 E-8		;zero the extruded length again**
+```
