@@ -53,3 +53,6 @@ T0		;switch to the left extruder
 M605 S2 X105.0		;set dual carriage mode, Duplication, 105mm offset
 G92 E-8		;zero the extruded length again
 ```
+
+Just make sure that the `G1 F2400 E-8` is the same value as the `G92 E-8` found at the end.
+Also if using Vitamins, make sure the 'Prevent Filament Grinding' is disabled, as this does not play ball at the moment.
