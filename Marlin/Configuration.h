@@ -112,6 +112,13 @@
 #define MOTHERBOARD BCN3D_BOARD //Marcotronics
 #endif
 
+// Define X_SIGMA_CONFIG to setup the BCN3D Sigma R17 and R16 with SigmaX enhancements:
+#define X_SIGMA_CONFIG
+#ifdef X_SIGMA_CONFIG
+	#define BCN3D_PRINTER_SETUP BCN3D_SIGMA_PRINTER_DEFAULT
+	#define BCN3D_SCREEN_VERSION_SETUP BCN3D_SIGMA_PRINTER_DEVMODE_1
+#endif
+
 #ifndef BCN3D_PRINTER_SETUP
 	#define BCN3D_PRINTER_SETUP BCN3D_SIGMA_PRINTER_DEFAULT
 #endif
@@ -300,10 +307,10 @@
 #define	PLA_PRINT_TEMP			215
 #define PLA_BED_TEMP			65
 
-#define	ABS_LOAD_TEMP			260
+#define	ABS_LOAD_TEMP			255   //  Changed 06/10/17 CL was 260
 #define	ABS_UNLOAD_TEMP			230
-#define	ABS_PRINT_TEMP			260
-#define ABS_BED_TEMP			90
+#define	ABS_PRINT_TEMP			255   //  Changed 06/10/17 CL was 260
+#define ABS_BED_TEMP			95    //  Changed 06/10/17 CL was 90
 
 #define	PVA_LOAD_TEMP			230
 #define	PVA_UNLOAD_TEMP			160
@@ -320,7 +327,7 @@
 #define HEATER_0_MAXTEMP 315
 #define HEATER_1_MAXTEMP 315
 #define HEATER_2_MAXTEMP 315
-#define BED_MAXTEMP 110
+#define BED_MAXTEMP 125    //  Changed 06/10/17 CL was 110
 
 // If your bed has low resistance e.g. .6 ohm and throws the fuse you can duty cycle it to reduce the
 // average current. The value should be an integer and the heat bed will be turned on for 1 interval of
@@ -822,7 +829,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 	#endif
 	#define Z_SIGMA_HOME_Y_POINT 150
 	
-	#define SIGMA_Z_HOME_TRAVEL_SPEED 13000
+	#define SIGMA_Z_HOME_TRAVEL_SPEED 8000  //  Changed 06/10/17 CL was 13000
 	
 	#define Z_SIGMA_RAISE_BEFORE_HOMING 10
 	#define Z_SIGMA_RAISE_AFTER_HOMING 5
@@ -1025,7 +1032,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define NUM_LINES 10
 //#define HOMING_FEEDRATE {50*60, 50*60, 4*60, 0}  // set the homing speeds (mm/min)
 #if BCN3D_PRINTER_SETUP == BCN3D_SIGMA_PRINTER_DEFAULT
-	#define HOMING_FEEDRATE {60*60, 90*60, 15*60, 0} ///{75*60, 65*60, 6*60, 0}  // old homing speeds (mm/min)
+	#define HOMING_FEEDRATE {30*60, 45*60, 6*60, 0} //{60*60, 90*60, 15*60, 0} ///{75*60, 65*60, 6*60, 0}  // old homing speeds (mm/min)   //  Changed 06/10/17 CL was {60*60, 90*60, 15*60, 0}
 #else
 	#define HOMING_FEEDRATE {60*60, 90*60, 15*60, 0} ///{75*60, 65*60, 6*60, 0}  // old homing speeds (mm/min)
 #endif

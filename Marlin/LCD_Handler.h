@@ -1376,8 +1376,8 @@ void myGenieEventHandler(void) //Handler for the do.Events() function
 						
 						if(card.cardOK)
 						{
-							//doblocking = true;
-							#if BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1
+							//doblocking = true; 
+							#if (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1) && !defined(X_SIGMA_CONFIG)
 							if(listsd.check_extract_ensure_duplication_print()){
 								if(abs(extruder_offset[Z_AXIS][RIGHT_EXTRUDER]) > RAFT_Z_THRESHOLD){
 									genie.WriteObject(GENIE_OBJ_FORM,FORM_RAFT_ADVISE, 0);
@@ -1407,7 +1407,7 @@ void myGenieEventHandler(void) //Handler for the do.Events() function
 					waitPeriod_button_press=millis()+WAITPERIOD_PRESS_BUTTON;
 					break;
 					
-					#if BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1
+					#if (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1) && !defined(X_SIGMA_CONFIG)
 					case BUTTON_RAFT_ADVISE_ACCEPT:
 					if (millis() >= waitPeriod_button_press){
 						
@@ -2775,7 +2775,7 @@ void myGenieEventHandler(void) //Handler for the do.Events() function
 						touchscreen_update();
 						fanSpeed=255;
 						printer_state = STATE_NYLONCLEANING;
-						#if BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1
+						#if (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1) && !defined(X_SIGMA_CONFIG)
 						genie.WriteObject(GENIE_OBJ_USERBUTTON,BUTTON_UTILITIES_MAINTENANCE_NYLONCLEANING_STEP4,1);
 						#endif
 						
@@ -2784,12 +2784,12 @@ void myGenieEventHandler(void) //Handler for the do.Events() function
 						gif_processing_state = PROCESSING_UTILITIES_MAINTENANCE_NYLONCLEANING_STEP4;
 					}
 					break;
-					#if BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEFAULT
+					#if (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEFAULT) || defined(X_SIGMA_CONFIG)
 					case BUTTON_UTILITIES_MAINTENANCE_NYLONCLEANING_STEP4:
 					if(printer_state == STATE_NYLONCLEANING){
 						if (millis() >= waitPeriod_button_press){
 							waitPeriod_button_press=millis()+WAITPERIOD_PRESS_BUTTON;
-							#if BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1
+							#if (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1) && !defined(X_SIGMA_CONFIG)
 							genie.WriteObject(GENIE_OBJ_USERBUTTON,BUTTON_UTILITIES_MAINTENANCE_NYLONCLEANING_STEP4,0);
 							#endif
 							if(which_extruder == 0)digitalWrite(FAN_PIN, 1);
@@ -3226,7 +3226,7 @@ void myGenieEventHandler(void) //Handler for the do.Events() function
 							printer_state = STATE_NONE;
 						}
 					}
-					#if BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1
+					#if (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1) && !defined(X_SIGMA_CONFIG)
 					else if(printer_state == STATE_NYLONCLEANING){
 						if (millis() >= waitPeriod_button_press){
 							waitPeriod_button_press=millis()+WAITPERIOD_PRESS_BUTTON;
@@ -4015,8 +4015,7 @@ void myGenieEventHandler(void) //Handler for the do.Events() function
 						}
 					}
 					break;
-
-					#if BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1
+					#if (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1) && !defined(X_SIGMA_CONFIG)
 					case BUTTON_Z_COMPENSATION_SKIP:
 					if (millis() >= waitPeriod_button_press){
 						waitPeriod_button_press=millis()+WAITPERIOD_PRESS_BUTTON;
@@ -4129,7 +4128,6 @@ void myGenieEventHandler(void) //Handler for the do.Events() function
 						Z_compensation_coolingdown();
 					}
 					break;
-					
 					#endif
 					
 					case BUTTON_UTILITIES_CALIBRATION_CALIBFULL_GOCALIBX_GO:
@@ -5324,13 +5322,13 @@ inline void Bed_Compensation_Redo_Lines(int jint){
 	
 }
 inline void Z_compensation_decisor(void){
-	#if BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEFAULT
+	#if (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEFAULT) || defined(X_SIGMA_CONFIG)
 	genie.WriteObject(GENIE_OBJ_FORM,FORM_UTILITIES_CALIBRATION_CALIBFULL_GOCALIBX,0);
 	if(Step_First_Start_Wizard){
 		genie.WriteObject(GENIE_OBJ_USERBUTTON,BUTTON_UTILITIES_CALIBRATION_CALIBFULL_GOCALIBX_SKIP,1);
 	}
 	
-	#elif BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1
+	#elif (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1) && !defined(X_SIGMA_CONFIG)
 	if(abs(extruder_offset[Z_AXIS][RIGHT_EXTRUDER]) <=RAFT_Z_THRESHOLD){
 		genie.WriteObject(GENIE_OBJ_FORM,FORM_UTILITIES_CALIBRATION_CALIBFULL_GOCALIBX,0);
 		if(Step_First_Start_Wizard){
@@ -5531,7 +5529,7 @@ inline void Full_calibration_Y_set(float offset){
 		flag_utilities_calibration_calibfull = false;
 	}
 }
-#if BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1
+#if (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1) && !defined(X_SIGMA_CONFIG)
 inline void Z_compensation_coolingdown(void){
 	char buffer[256];
 	static long waitPeriod_s = millis();
@@ -5593,7 +5591,7 @@ inline void Z_compensation_coolingdown(void){
 	current_position[Z_AXIS]= 180;
 	plan_buffer_line(current_position[X_AXIS],current_position[Y_AXIS],current_position[Z_AXIS],current_position[E_AXIS],15,which_extruder);
 	current_position[Y_AXIS] = 100;
-	#if BCN3D_PRINTER_SETUP == BCN3D_SIGMA_PRINTER_DEFAULT
+	#if (BCN3D_PRINTER_SETUP == BCN3D_SIGMA_PRINTER_DEFAULT) || defined(X_SIGMA_CONFIG)
 	plan_buffer_line(current_position[X_AXIS],current_position[Y_AXIS],current_position[Z_AXIS],current_position[E_AXIS],XY_TRAVEL_SPEED*1.5,which_extruder);
 	st_synchronize();
 	current_position[X_AXIS] = 155;

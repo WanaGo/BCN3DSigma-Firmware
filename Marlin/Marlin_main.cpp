@@ -916,7 +916,7 @@ void setup()
 		}
 		genie.WriteObject(GENIE_OBJ_FORM,FORN_SETUPASSISTANT_YESNOT,0);
 	}
-	#if BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1
+	#if (BCN3D_SCREEN_VERSION_SETUP == BCN3D_SIGMA_PRINTER_DEVMODE_1) && !defined(X_SIGMA_CONFIG)
 	else if(flag_utilities_calibration_zcomensationmode_gauges == 1888 || flag_utilities_calibration_zcomensationmode_gauges == 2888 ){
 		genie.WriteObject(GENIE_OBJ_FORM, FORM_Z_COMPENSATION_COMFIRMATION,0);
 	}
